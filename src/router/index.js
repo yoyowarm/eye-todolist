@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import defaultLayout from '../layouts/default.vue'
 
 Vue.use(VueRouter)
 
@@ -11,12 +12,43 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/lists',
+    component: defaultLayout,
+    children: [
+      {
+        name: 'Lists',
+        path: '',
+        component: () => import('../views/Lists.vue')
+      }
+    ]
+
+  },
+  {
+    path: '/add-details',
+    component: defaultLayout,
+    children: [
+      {
+        name: 'Add',
+        path: '',
+        component: () => import('../views/Detail.vue')
+      }
+    ]
+  },
+  {
+    path: '/edit-details/:id',
+    component: defaultLayout,
+    children: [
+      {
+        name: 'Edit',
+        path: '',
+        component: () => import('../views/Detail.vue')
+      }
+    ]
   }
 ]
 
