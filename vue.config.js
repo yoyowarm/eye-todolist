@@ -1,9 +1,6 @@
-require('dotenv').config({ path: './.env' })
-module.exports = function () {
-  return {
-    publicPath: '../../',
-    transpileDependencies: [
-      'vuetify'
-    ]
-  }
+module.exports = {
+  publicPath: './',
+  transpileDependencies: [
+    'vuetify'
+  ]
 }
